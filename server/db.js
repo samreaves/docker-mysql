@@ -14,8 +14,8 @@ var pool      =    mysql.createPool({
     connectionLimit : 100, 
     host     : 'mysql',
     user     : 'admin',
-    port     : '3306',
     password : 'admin',
+    port     : '3306',
     database : 'brnr',
     debug    :  false
 });
