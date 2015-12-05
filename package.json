@@ -4,14 +4,16 @@
   "description": "Testing MySQL with Docker",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "start": "node ./server/app.js",
+    "test": "mocha -R spec ./server/test.js"
   },
   "author": "Sam Reaves <thesamreaves@gmail.com> (http://www.github.com/samreaves)",
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.14.1",
     "express": "4.13.3",
-    "mysql": "2.9.0"
+    "mysql": "2.9.0",
+    "q": "1.4.1"
   },
   "devDependencies": {
     "mocha": "2.3.4",
