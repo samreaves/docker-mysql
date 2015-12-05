@@ -1,9 +1,3 @@
-/* Create brnr database */
-CREATE DATABASE brnr;
-
-/* Set context to brnr database */
-USE brnr;
-
 /* Create products table with ID, name, dimensions, price, and volume of wood */
 CREATE TABLE products
 (
