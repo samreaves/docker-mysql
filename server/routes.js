@@ -22,7 +22,7 @@ routes.get('/products', function(req, res) {
 
 	// Grab all products
 	product_model.getAllProducts().then(function(products) {
-		
+	
 		// If products don't exist
 		if (!products) {
 
@@ -36,6 +36,11 @@ routes.get('/products', function(req, res) {
 			// Send products
 			res.status(200).send(products);
 		}
+	})
+	.catch(function(err) {
+		console.log(err);
+		// Send error
+		res.status(500).send("Problem grabbing products");
 	})
 });
 
