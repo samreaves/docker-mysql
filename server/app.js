@@ -16,6 +16,9 @@ var express = require('express'),
 	host,
 	port;
 
+// Fuck off with your nonsense header
+app.disable('x-powered-by');
+
 // Use body parser to parse both application/json and application/x-www-form-urlencoded
 app.use(body_parser.urlencoded({extended: false}));
 app.use(body_parser.json());
