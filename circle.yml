@@ -1,0 +1,46 @@
+# Create a machine on Circle CI
+machine:
+
+  # Preload Docker onto our machine
+  services:
+    - docker
+
+  # Before doing anything, download Docker 1.9.0 and give it permission to do administrator things.
+  pre:
+    - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
+    - sudo chmod 0755 /usr/bin/docker
+
+    # Update NPM
+    - npm -g install npm@latest
+
+
+# Override CircleCI dependencies
+dependencies:
+  override:
+
+    # Download Docker-Compose 1.5.1 and give it permission
+    - curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
+    - chmod +x /home/ubuntu/bin/docker-compose
+
+  # Since package.json inside app folder, must install node modules manually on Circle CI machine
+  post: 
+    - npm install
+
+
+# Override CircleCI tests
+test:
+  override:
+
+    # Run container
+    - docker-compose up
+
+    # test
+    - npm test
+
+# Should the tests pass, we deploy master branch to DockerHub
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push samreaves/learn-docker
