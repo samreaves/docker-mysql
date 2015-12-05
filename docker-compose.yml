@@ -1,0 +1,38 @@
+#docker run -d -p 3306:3306 -e MYSQL_USER="admin" -e MYSQL_PASS="admin" -e STARTUP_SQL="tmp/seed.sql" -v /db:/var/lib/mysql tutum/mysql
+
+# Our web container
+web:
+
+  # Root directory is built
+  build: .
+
+  # Mount volume of local files
+  volumes:
+    - ".:/src/"
+
+  # Map machines port 80 with container's 3000
+  ports:
+    - "80:3000"
+
+  # Link to our mysql container
+  links:
+    - mysql
+
+# Our MySQL container
+mysql:
+
+  # Grab the latest mysql image from Docker
+  image: tutum/mysql:latest
+
+  # Set port to default mysql port
+  ports: 
+    - "3306:3306"
+
+  # Mount volume of local files
+  volumes:
+    - ".:/src/"
+
+  # Set up environment variables
+  environment:
+    MYSQL_USER: admin
+    MYSQL_PASS: admin
