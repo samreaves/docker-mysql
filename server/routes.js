@@ -34,7 +34,7 @@ routes.get('/products', function(req, res) {
 		else {
 
 			// Send products
-			res.status(200).send(products);
+			res.status(200).json(products);
 		}
 	})
 	.catch(function(err) {
