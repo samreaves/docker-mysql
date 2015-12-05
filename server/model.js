@@ -38,12 +38,13 @@ module.exports.getAllProducts = function() {
 	// Grab connection from database pool
 	db.getConnection(function(err, connection) {
 
+		// Release the connection. Reject the promise
+		connection !== undefined ? connection.release() : console.log(err);
+
 		// If error
 		if (err) {
 
-			// Release the connection. Reject the promise
-			connection !== undefined ? connection.release() : console.log("database exploded");
-			deferred.reject("Error in connection to database");
+			deferred.reject(err);
 		} 
 
 		// If we're in the clear
@@ -63,12 +64,12 @@ module.exports.getAllProducts = function() {
 					deferred.resolve(products);
 				}
 			});
-		}
 
-		// On error, reject promise with error
-		connection.on('error', function(err) {
-			deferred.reject("Problem with database connection");
-		})
+			// On error, reject promise with error
+			connection.on('error', function(err) {
+				deferred.reject(err);
+			})
+		}
 	})
 
 	// Return promise
