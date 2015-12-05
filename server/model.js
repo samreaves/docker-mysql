@@ -38,11 +38,11 @@ module.exports.getAllProducts = function() {
 	// Grab connection from database pool
 	db.getConnection(function(err, connection) {
 
-		// Release the connection. Reject the promise
-		connection !== undefined ? connection.release() : console.log(err);
-
 		// If error
 		if (err) {
+
+			// Release the connection. Reject the promise
+			connection !== undefined ? connection.release() : console.log(err);
 
 			deferred.reject(err);
 		} 
