@@ -22,7 +22,7 @@ dependencies:
     - curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
     - chmod +x /home/ubuntu/bin/docker-compose
 
-  # Since package.json inside app folder, must install node modules manually on Circle CI machine
+  # Install node modules manually on Circle CI machine
   post: 
     - npm install
 
@@ -43,4 +43,4 @@ deployment:
     branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push samreaves/learn-docker
+      - docker push samreaves/docker-mysql
