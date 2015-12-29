@@ -52,14 +52,14 @@ describe('server tests', function () {
           name: "BRnr Cord",
           dimensions: "4'x 4'x 8'",
           price: 500, 
-          volume: "128 cubic feet"
+          volume: "128 Cubic Feet"
         },
         {
           id: 2,
           name: "BRnr Half Cord",
           dimensions: "4'x 4'x 4'",
           price: 350, 
-          volume: "64 cubic feet"
+          volume: "64 Cubic Feet"
         },
         {
           id: 3,
@@ -73,7 +73,7 @@ describe('server tests', function () {
           name: "BRnr Quarter Cord",
           dimensions: "4'x 6'x 16\"",
           price: 275, 
-          volume: "64 cubic feet"
+          volume: "64 Cubic Feet"
         },
         {
           id: 5,
