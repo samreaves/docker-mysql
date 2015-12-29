@@ -1,3 +1,4 @@
 # Ignore node modules and annoying mac files
 node_modules
 .DS_Store
+*.log
