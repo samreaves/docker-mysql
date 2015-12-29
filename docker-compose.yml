@@ -36,3 +36,5 @@ mysql:
   environment:
     MYSQL_USER: admin
     MYSQL_PASS: admin
+    ON_CREATE_DB: brnr
+    STARTUP_SQL: /src/tmp/seed.sql

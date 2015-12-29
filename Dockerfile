@@ -17,13 +17,10 @@ WORKDIR /src
 ADD . /src
 
 # Grant permission to bash file
-RUN chmod +x /src/tmp/init_db.sh
-
-# Look around
-RUN ls
+#RUN chmod +x /tmp/init_db.sh
 
 # Initialize database
-RUN /src/tmp/init_db.sh
+#RUN tmp/init_db.sh
 
 # Install dependencies
 RUN npm install

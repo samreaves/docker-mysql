@@ -1,3 +1,6 @@
+/* Use new database */
+USE brnr
+
 /* Create products table with ID, name, dimensions, price, and volume of wood */
 CREATE TABLE products
 (
