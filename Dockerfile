@@ -16,6 +16,12 @@ WORKDIR /src
 # Add local current directory to container's src directory
 ADD . /src
 
+# Grant permission to bash file
+RUN chmod +x /src/tmp/init_db.sh
+
+# Look around
+RUN ls
+
 # Initialize database
 RUN /src/tmp/init_db.sh
 

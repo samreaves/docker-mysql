@@ -19,7 +19,7 @@ dependencies:
   override:
 
     # Download Docker-Compose 1.5.1 and give it permission
-    - curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
+    - curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
     - chmod +x /home/ubuntu/bin/docker-compose
 
   # Install node modules manually on Circle CI machine
