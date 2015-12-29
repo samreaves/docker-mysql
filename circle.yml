@@ -24,8 +24,8 @@ dependencies:
     - chmod +x /home/ubuntu/bin/docker-compose
 
   # Install node modules manually on Circle CI machine
-  post: 
-    - npm install
+  #post: 
+    #- npm install
 
 
 # Override CircleCI tests
@@ -33,10 +33,10 @@ test:
   override:
 
     # Run container
-    - docker-compose up -d
+    - docker-compose up
 
     # test
-    - npm test
+    #- npm test
 
 # Should the tests pass, we deploy master branch to DockerHub
 deployment:

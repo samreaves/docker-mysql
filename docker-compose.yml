@@ -6,6 +6,9 @@ web:
   # Root directory is built
   build: .
 
+  # Trying out test instead of start
+  command: npm test
+
   # Mount volume of local files
   volumes:
     - ".:/src/"
