@@ -9,6 +9,7 @@
 // Import Express and initialize server.
 var express = require('express'),
 	app = module.exports.app = exports.app = express(),
+	logger = require("./logger"),
 	body_parser = require('body-parser'),
 	db = require("./db"),
 	routes = require("./routes"),
@@ -23,6 +24,9 @@ app.disable('x-powered-by');
 app.use(body_parser.urlencoded({extended: false}));
 app.use(body_parser.json());
 
+// Remind us that we're using our own Winston logger
+logger.debug("Overriding 'Express' logger");
+
 // Include routes
 app.use(routes);
 
@@ -33,7 +37,7 @@ server = app.listen(3000, function() {
   	port = server.address().port;
 
   	// Logs a message to let dev know we're up and running.
-  	console.log('Example app listening at http://%s:%s', host, port);
+  	logger.info('Example app listening at http://%s:%s', host, port);
 });
 
 // Export the server for testing

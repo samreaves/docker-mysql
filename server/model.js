@@ -13,7 +13,8 @@
 
 // Initialize express, file system, lodash
 var db = require('./db'),
-	Q = require('q');
+	Q = require('q'),
+	logger = require("./logger");
     
 
 
@@ -44,6 +45,8 @@ module.exports.getAllProducts = function() {
 			// Release the connection. Reject the promise
 			connection !== undefined ? connection.release() : console.log(err);
 
+
+			logger.debug(err);
 			deferred.reject(err);
 		} 
 
@@ -68,6 +71,7 @@ module.exports.getAllProducts = function() {
 			// On error, reject promise with error
 			connection.on('error', function(err) {
 				deferred.reject(err);
+				logger.debug(err);
 			})
 		}
 	})

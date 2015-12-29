@@ -9,16 +9,20 @@
 // Import Express and initialize server.
 var express = require('express'),
 	routes = express.Router(),
-	product_model = require('./model');
+	product_model = require('./model'),
+	logger = require('./logger');
 
 
 // Respond with something simple at root
 routes.get('/', function(req, res) {
+  logger.info("root requested");
   res.status(200).send("Hello, Sam");
 });
 
 // On products endpoint
 routes.get('/products', function(req, res) {
+
+	logger.info("/products requested");
 
 	// Grab all products
 	product_model.getAllProducts().then(function(products) {
@@ -38,7 +42,7 @@ routes.get('/products', function(req, res) {
 		}
 	})
 	.catch(function(err) {
-		console.log(err);
+		logger.debug(err);
 		// Send error
 		res.status(500).send("Problem grabbing products");
 	})

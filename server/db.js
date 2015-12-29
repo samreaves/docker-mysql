@@ -20,7 +20,5 @@ var pool      =    mysql.createPool({
     debug    :  false
 });
 
-console.log("pool: ", pool);
-
 // Export the pool
 module.exports = pool;
