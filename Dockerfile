@@ -16,12 +16,6 @@ WORKDIR /src
 # Add local current directory to container's src directory
 ADD . /src
 
-# Grant permission to bash file
-#RUN chmod +x /tmp/init_db.sh
-
-# Initialize database
-#RUN tmp/init_db.sh
-
 # Install dependencies
 RUN npm install
 
