@@ -7,14 +7,15 @@
  */
 
 // Require mysql from node modules
-var	mysql = require('mysql');
+var	mysql = require('mysql'),
+	config = require('./config');
 
 //Set up connection pool limited to 100 connections
 var pool      =    mysql.createPool({
     connectionLimit : 100, 
     host     : 'mysql',
-    user     : 'admin',
-    password : 'admin',
+    user     : config.user,
+    password : config.password,
     port     : '3306',
     database : 'brnr',
     debug    :  false
