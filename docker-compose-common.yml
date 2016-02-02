@@ -1,0 +1,6 @@
+# Our web container
+web:
+  
+  # Map machines port 80 with container's 3000
+  ports:
+    - "8080:8080"

@@ -1,0 +1,17 @@
+# Our web container
+web:
+  # Extend from original docker-compose.yml web service
+  extends:
+    file: docker-compose.yml
+    service: web
+
+  # Run npm test instead of npm start
+  command: npm test
+
+# Test database container
+mysql:
+
+  # Extend from original docker-compose.yml mysql service
+  extends:
+    file: docker-compose.yml
+    service: mysql

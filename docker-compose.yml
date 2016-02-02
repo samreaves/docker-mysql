@@ -1,13 +1,8 @@
-#docker run -d -p 3306:3306 -e MYSQL_USER="admin" -e MYSQL_PASS="admin" -e STARTUP_SQL="tmp/seed.sql" -v /db:/var/lib/mysql tutum/mysql
-
 # Our web container
 web:
 
   # Root directory is built
   build: .
-
-  # Trying out test instead of start
-  command: npm test
 
   # Mount volume of local files
   volumes:

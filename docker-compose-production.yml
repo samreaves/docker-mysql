@@ -1,0 +1,14 @@
+# Our web container
+web:
+  
+  # Extend from docker-compose.common.yml web service
+  extends:
+    file: docker-compose.common.yml
+    service: web
+
+  # Specify built image from DockerHub
+  image: samreaves/docker-mysql
+  
+  # Add extra host of RDS MySQL
+  extra_hosts:
+    - "chelsea.cwge1bjd58av.us-east-1.rds.amazonaws.com"
