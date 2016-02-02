@@ -11,28 +11,3 @@ web:
   # Map machines port 80 with container's 3000
   ports:
     - "80:3000"
-
-  # Link to our mysql container
-  links:
-    - mysql
-
-# Our MySQL container
-mysql:
-
-  # Grab the latest mysql image from Docker
-  image: tutum/mysql:latest
-
-  # Set port to default mysql port
-  ports: 
-    - "3306:3306"
-
-  # Mount volume of local files
-  volumes:
-    - ".:/src/"
-
-  # Set up environment variables
-  environment:
-    MYSQL_USER: admin
-    MYSQL_PASS: admin
-    ON_CREATE_DB: brnr
-    STARTUP_SQL: /src/tmp/seed.sql

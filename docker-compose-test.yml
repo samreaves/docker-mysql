@@ -5,13 +5,30 @@ web:
     file: docker-compose.yml
     service: web
 
+    # Link to our mysql container
+  links:
+    - mysql
+
   # Run npm test instead of npm start
   command: npm test
 
 # Test database container
 mysql:
 
-  # Extend from original docker-compose.yml mysql service
-  extends:
-    file: docker-compose.yml
-    service: mysql
+  # Grab the latest mysql image from Docker
+  image: tutum/mysql:latest
+
+  # Set port to default mysql port
+  ports: 
+    - "3306:3306"
+
+  # Mount volume of local files
+  volumes:
+    - ".:/src/"
+
+  # Set up environment variables
+  environment:
+    MYSQL_USER: admin
+    MYSQL_PASS: admin
+    ON_CREATE_DB: brnr
+    STARTUP_SQL: /src/tmp/seed.sql
