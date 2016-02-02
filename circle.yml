@@ -23,9 +23,8 @@ dependencies:
     - curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
     - chmod +x /home/ubuntu/bin/docker-compose
 
-  # Install node modules manually on Circle CI machine
-  #post: 
-    #- npm install
+    # Build image to be uploaded if tests pass
+    - docker build -t samreaves/docker-mysql .
 
 
 # Override CircleCI tests
@@ -33,10 +32,8 @@ test:
   override:
 
     # Run container
-    - docker-compose up -d
+    - docker-compose -f docker-compose.test.yml up -d --no-recreate
 
-    # test
-    #- npm test
 
 # Should the tests pass, we deploy master branch to DockerHub
 deployment:
